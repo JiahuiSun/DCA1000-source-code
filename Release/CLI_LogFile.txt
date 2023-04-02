@@ -1,0 +1,9 @@
+
+Sun Apr  2 10:47:49 2023
+FPGA Configuration Command (req)
+
+Sun Apr  2 10:47:49 2023
+FPGA Configuration command : Success
+
+Sun Apr  2 10:47:49 2023
+Return status : 0
