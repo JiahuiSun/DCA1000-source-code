@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+doxygen/
+Release/
+.vscode/

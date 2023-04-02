@@ -994,6 +994,7 @@ void updateRecInlineStatus()
  */
 SINT32 main(SINT32 argc, SINT8* argv[])
 {
+    // TODO: parse input params.
     /** Command line argument  1 - Command name */
     SINT8 s8Command[MAX_NAME_LEN];
 
@@ -1080,7 +1081,7 @@ SINT32 main(SINT32 argc, SINT8* argv[])
         }
     }
 #endif
-
+    // TODO: validate input json config
     if((strcmp(s8Command, CMD_HELP_CLI_APP) == 0) ||
             (strcmp(s8Command, CMD_HELP_S_CLI_APP) == 0))
     {
@@ -1121,7 +1122,7 @@ SINT32 main(SINT32 argc, SINT8* argv[])
     s32CliStatus = ValidateJsonFileData_Rec(s8CommandArg, CMD_CODE_START_RECORD);
     if(s32CliStatus < 0)
         return s32CliStatus;
-
+    // TODO: judge whether a process is running, if so, stop first
     if(IsRecordProcRunning_Rec())
     {
         WRITE_TO_LOG_FILE_REC(s8Command);
@@ -1132,7 +1133,7 @@ SINT32 main(SINT32 argc, SINT8* argv[])
     else
     {
         SHM_PROC_STATES procStates;
-
+        // TODO: create shared memory
         if(osalObj_Rec.QueryRecordProcStatus(gsEthConfigMode.u32ConfigPortNo,
                 &procStates) == CLI_SHM_NOT_AVAIL_ERR)
         {
@@ -1163,7 +1164,7 @@ SINT32 main(SINT32 argc, SINT8* argv[])
         WRITE_TO_LOG_FILE_REC(s8DebugMsg);
         return CLI_INLINE_CALLBACK_REG_FAILED_ERR;
     }
-
+    // TODO: important!!! set up socket
     /** API Call - Ethernet connection                                       */
     s32CliStatus = ConnectRFDCCard_RecordMode(gsEthConfigMode);
     if(s32CliStatus != SUCCESS_STATUS)
@@ -1191,7 +1192,7 @@ SINT32 main(SINT32 argc, SINT8* argv[])
                                   STS_CLI_REC_PROC_START_INIT);
 
     bStopCmdSent = false;
-
+    // TODO: where the data is recorded?
     /** API Call - Start Record                                     */
     s32CliStatus = StartRecordData(gsStartRecConfigMode);
 
