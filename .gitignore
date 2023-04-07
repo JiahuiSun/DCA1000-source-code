@@ -34,3 +34,6 @@
 doxygen/
 Release/
 .vscode/
+build/
+devel/
+src/mmwave_radar/data/

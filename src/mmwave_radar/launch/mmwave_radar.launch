@@ -1,0 +1,6 @@
+<launch>
+	<arg name="dca_config" value="$(find mmwave_radar)/config/cf.json" doc="path to configuration file of DCA1000EVM" />
+	<node pkg="mmwave_radar" type="mmwave_radar_ctrl" name="mmwave_radar_ctrl" args="fpga $(arg dca_config)" output="screen" /> 
+	<node pkg="mmwave_radar" type="mmwave_radar" name="mmwave_radar" args="start_record $(arg dca_config)" output="screen" /> 
+	<node pkg="mmwave_radar" type="mmwave_radar_recv" name="mmwave_radar_recv" output="screen" />
+</launch>
