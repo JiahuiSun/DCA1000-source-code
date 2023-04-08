@@ -3,6 +3,9 @@
 	<arg name="xwr_config" value="$(find mmwave_radar)/config/xwr18xx.cfg" doc="path to configuration file of xWR1xxx" />
 	<!-- 需要修改 -->
 	<arg name="xwr_cli_port" value="/dev/ttyACM0" doc="xWR1xxx radar port" />
+	<!-- 设置buffer size=1帧信号的字节数，packet_size=buffer size的公约数，如1个chirp的字节数 -->
+	<!-- <param name="buffer_size" type="int" value="196608" />
+	<param name="packet_size" type="int" value="1034" /> -->
 
 	<node pkg="mmwave_radar" type="mmwave_radar_ctrl" name="mmwave_radar_ctrl" args="fpga $(arg dca_config)" output="screen" /> 
 	<node pkg="mmwave_radar" type="mmwave_radar_record" name="mmwave_radar_record" args="start_record $(arg dca_config)" output="screen" /> 

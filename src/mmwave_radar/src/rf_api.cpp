@@ -1627,8 +1627,8 @@ ros::NodeHandle nh
 
     // u32MaxFileSizeToCapture = sRFDCCard_StartRecConfig.u16MaxRecFileSize *
                                 // 1024 * 1024;
-    // 设为1帧大小                
-    u32MaxFileSizeToCapture = 0.1875 * 1024 * 1024;
+    // 设为1帧大小       
+    u32MaxFileSizeToCapture = INLINE_BUF_SIZE;
 
     if(sRFDCCard_StartRecConfig.eLvdsMode == TWO_LANE)
         u8LaneNumber = 2;
