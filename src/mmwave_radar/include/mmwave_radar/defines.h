@@ -96,6 +96,7 @@
 #define MAX_BYTES_PER_REC_DATA_FILE         1073741824
 
 /** Maximum bytes in the data packet                                         */
+// packet size
 #define MAX_BYTES_PER_PACKET				1034
 
 /** Size of unsigned short integer value                                     */
