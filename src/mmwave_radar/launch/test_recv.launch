@@ -1,0 +1,3 @@
+<launch>
+	<node pkg="mmwave_radar" type="mmwave_radar_recv" name="mmwave_radar_recv" output="screen" />
+</launch>

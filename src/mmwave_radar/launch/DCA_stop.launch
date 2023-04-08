@@ -1,0 +1,8 @@
+<launch>
+	<arg name="dca_config" value="$(find mmwave_radar)/config/cf.json" doc="path to configuration file of DCA1000EVM" />
+	<!-- 需要修改 -->
+	<arg name="xwr_cli_port" value="/dev/ttyACM0" doc="xWR1xxx radar port" />
+
+	<node pkg="mmwave_radar" type="xwr_stop.py" name="xwr_stop" args="$(arg xwr_cli_port)" output="screen" /> 
+	<node pkg="mmwave_radar" type="mmwave_radar_ctrl" name="mmwave_radar_ctrl" args="stop_record $(arg dca_config)" output="screen" /> 
+</launch>

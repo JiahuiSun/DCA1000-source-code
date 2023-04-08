@@ -145,7 +145,7 @@ set(SOURCE_SAVE
 )
 
 ## Declare a C++ library
-add_library(libRF_API
+add_library(RF_API
   ${SOURCE_DLL}
   ${SOURCE_OSAL}
 )
@@ -158,7 +158,7 @@ add_library(libRF_API
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(mmwave_radar ${SOURCE_REC} ${SOURCE_OSAL})
+add_executable(mmwave_radar_record ${SOURCE_REC} ${SOURCE_OSAL})
 add_executable(mmwave_radar_ctrl ${SOURCE_CTRL} ${SOURCE_OSAL})
 add_executable(mmwave_radar_recv ${SOURCE_SAVE})
 
@@ -170,17 +170,17 @@ add_executable(mmwave_radar_recv ${SOURCE_SAVE})
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-add_dependencies(mmwave_radar ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(mmwave_radar_record ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(mmwave_radar_ctrl ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(mmwave_radar_recv ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(mmwave_radar
-  libRF_API
+target_link_libraries(mmwave_radar_record
+  RF_API
   ${catkin_LIBRARIES}
 )
 target_link_libraries(mmwave_radar_ctrl
-  libRF_API
+  RF_API
   ${catkin_LIBRARIES}
 )
 target_link_libraries(mmwave_radar_recv
@@ -196,10 +196,11 @@ target_link_libraries(mmwave_radar_recv
 
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
-# catkin_install_python(PROGRAMS
-#   scripts/my_python_script
-#   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-# )
+catkin_install_python(PROGRAMS
+  script/xwr_start.py
+  script/xwr_stop.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
 
 ## Mark executables for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html

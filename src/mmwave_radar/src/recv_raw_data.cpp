@@ -4,7 +4,7 @@
 
 
 char strFileName1[255];
-char strRecordFilePath[] = "/home/dingrong/Code/DCA1000/DCA1000-source-code/src/mmwave_radar/data/adc_";
+char strRecordFilePath[] = "/home/dingrong/Code/DCA1000/DCA1000-source-code/Release/data/adc_";
 char REC_DATA_FILE_EXTENSION[] = ".bin";
 int u32DataFileCount = 0;
 
@@ -16,7 +16,7 @@ void saveData(const mmwave_radar::adcData::ConstPtr& msg_ptr) {
     strcat(strFileName1, std::to_string(u32DataFileCount).c_str());
     strcat(strFileName1, REC_DATA_FILE_EXTENSION);
     FILE *pRecordDataFile = fopen(strFileName1, "wb+");
-    fwrite((const char *)& msg_ptr->data, 1, msg_ptr->size, pRecordDataFile);
+    fwrite(msg_ptr->data.data(), sizeof msg_ptr->data[0], msg_ptr->data.size(), pRecordDataFile);
     fclose(pRecordDataFile);
 }
 

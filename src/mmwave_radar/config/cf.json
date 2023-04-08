@@ -19,7 +19,7 @@
       "DCA1000DataPort": 4098
     },
     "captureConfig": {
-      "fileBasePath": "/home/dingrong/Code/DCA1000/DCA1000-source-code/src/mmwave_radar/data",
+      "fileBasePath": "/home/dingrong/Code/DCA1000/DCA1000-source-code/Release/data",
       "filePrefix": "adc_data",
       "maxRecFileSize_MB": 1024,
       "sequenceNumberEnable": 1,
