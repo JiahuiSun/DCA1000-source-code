@@ -1554,6 +1554,7 @@ ros::NodeHandle nh
     DEBUG_FILE_WRITE(s8DebugMsg);
 #endif
     objUdpDataRecv.pub = nh.advertise<mmwave_radar::adcData>("mmwave_adc_data", 10);
+    objUdpDataRecv.time_ = ros::Time::now();
 
     /** Resetting record global status    */
     gbRecStopCmdSent = false;

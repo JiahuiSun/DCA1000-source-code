@@ -887,7 +887,9 @@ void cUdpDataReceiver::writeDataToBuffer_Inline(SINT8 *s8Buffer, UINT32 u32Size,
         u32ReadPtrBufIndex = 0;
 
         /** Signal to write thread to start writing */
+        pre_time_ = time_;
         osalObj.SignalEvent(&sgnFileWriteInitWaitEvent);
+        time_ = ros::Time::now();
     }
 
     /** Store the current packet in buffer  */
@@ -1002,8 +1004,10 @@ bool cUdpDataReceiver::pubDataToServer_Inline(SINT8 *s8Buffer, UINT32 u32Size){
     }
     /** Data file publish **/
     mmwave_radar::adcData msg;
+    msg.header.seq = seq;
+    ++seq;
     msg.header.frame_id = frame_id;
-    msg.header.stamp = ros::Time();
+    msg.header.stamp = pre_time_;
     msg.size = u32Size;
     msg.data.resize(u32Size);
     msg.data.assign(s8Buffer, s8Buffer+u32Size);

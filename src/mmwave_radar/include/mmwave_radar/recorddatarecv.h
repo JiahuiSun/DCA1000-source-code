@@ -192,6 +192,9 @@ public:
     /* ROS publisher */
     std::string frame_id;
     ros::Publisher pub;
+    ros::Time pre_time_;
+    ros::Time time_;
+    UINT32 seq = 0;
 
     /** @fn cUdpDataReceiver(UINT8 u8DataTypeArg)
      * @brief This constructor function is to initialize the class member <!--
